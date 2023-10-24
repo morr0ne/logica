@@ -12,5 +12,8 @@
   "dependencies": {
     "astro": "^3.3.3",
     "pixi.js": "^7.3.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.6"
   }
 }
