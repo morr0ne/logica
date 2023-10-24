@@ -3,19 +3,22 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main id="app"></main>
+	<main id="app">
+		<div id="board"></div>
+	</main>
 </Layout>
 
 <script>
 	import { Application, Sprite } from "pixi.js";
 
-	let app = new Application({
-		width: 640,
-		height: 360,
+	const board = document.getElementById("board")!;
+
+	const app = new Application({
 		background: "#1099bb",
+		resizeTo: board,
 	});
 
-	document.getElementById("app")?.appendChild(app.view);
+	board.appendChild(app.view);
 
 	const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
 
