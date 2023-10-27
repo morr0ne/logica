@@ -1,34 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Board from "../components/Board.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Logica - Logic circuit simulator">
 	<main id="app">
-		<div id="board" class="h-screen"></div>
+		<Board />
 	</main>
 </Layout>
-
-<script>
-	import { Application, Sprite } from "pixi.js";
-
-	const board = document.getElementById("board")!;
-
-	const app = new Application({
-		background: "#1099bb",
-		resizeTo: board,
-	});
-
-	board.appendChild(app.view);
-
-	const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
-
-	app.stage.addChild(bunny);
-
-	bunny.anchor.set(0.5);
-	bunny.x = app.screen.width / 2;
-	bunny.y = app.screen.height / 2;
-
-	app.ticker.add((delta) => {
-		bunny.rotation += 0.1 * delta;
-	});
-</script>
