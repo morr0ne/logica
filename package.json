@@ -2,6 +2,7 @@
   "name": "logica",
   "type": "module",
   "version": "0.0.1",
+  "license": "(MIT OR Apache-2.0 OR Zlib)",
   "scripts": {
     "dev:web": "astro dev",
     "dev:native": "tauri dev",
