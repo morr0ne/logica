@@ -1,4 +1,11 @@
-<div id="board" class="h-screen"></div>
+<div id="board" class="h-screen">
+    <canvas id="canvas"></canvas>
+    <div class="absolute inset-x-0 top-0">
+        <button class="btn btn-sm relative left-1.5 top-1.5">
+            Press me UwU
+        </button>
+    </div>
+</div>
 
 <script>
     import {
@@ -8,43 +15,48 @@
         Sprite,
     } from "pixi.js";
 
+    import { Gate } from "./gate";
+
     const board = document.getElementById("board")!;
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
     const app = new Application({
         background: "#1099bb",
         resizeTo: board,
+        view: canvas,
     });
 
     app.stage.eventMode = "static";
     app.stage.hitArea = app.screen;
 
-    board.appendChild(app.view);
+    // const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
+    // bunny.texture.baseTexture.scaleMode = SCALE_MODES.NEAREST;
 
-    const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
-    bunny.texture.baseTexture.scaleMode = SCALE_MODES.NEAREST;
+    // bunny.cursor = "pointer";
 
-    bunny.cursor = "pointer";
+    // bunny.eventMode = "static";
+    // bunny.scale.set(3);
 
-    bunny.eventMode = "static";
-    bunny.scale.set(3);
+    // bunny.anchor.set(0.5);
+    // bunny.x = app.screen.width / 2;
+    // bunny.y = app.screen.height / 2;
 
-    bunny.anchor.set(0.5);
-    bunny.x = app.screen.width / 2;
-    bunny.y = app.screen.height / 2;
+    // bunny.on("pointerdown", () => {
+    //     bunny.alpha = 0.5;
+    //     app.stage.on("pointermove", drag);
+    // });
 
-    bunny.on("pointerdown", () => {
-        bunny.alpha = 0.5;
-        app.stage.on("pointermove", drag);
-    });
+    // function drag(event: FederatedPointerEvent) {
+    //     bunny.position = bunny.parent.toLocal(event.global);
+    // }
 
-    function drag(event: FederatedPointerEvent) {
-        bunny.position = bunny.parent.toLocal(event.global);
-    }
+    // app.stage.on("pointerup", () => {
+    //     app.stage.off("pointermove", drag);
+    //     bunny.alpha = 1;
+    // });
 
-    app.stage.on("pointerup", () => {
-        app.stage.off("pointermove", drag);
-        bunny.alpha = 1;
-    });
+    // app.stage.addChild(bunny);
 
-    app.stage.addChild(bunny);
+    const bunny = new Gate(app.screen.width / 2, app.screen.height / 2);
+    bunny.add(app.stage);
 </script>
