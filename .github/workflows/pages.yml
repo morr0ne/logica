@@ -3,10 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # Allows to trigger workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -16,22 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install node
-        uses: actions/setup-node@v4
-        with: 
-          node-version: 20
-      - name: Enable corepack
-        run: corepack enable
-      - name: Install dependencies
-        run: yarn install
-      - name: Build
-        run: yarn run build:web
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist/
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
 
   deploy:
     needs: build
@@ -42,4 +28,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
