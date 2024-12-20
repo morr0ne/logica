@@ -1,50 +1,50 @@
 <div id="board" class="h-screen"></div>
 
 <script>
-    import {
-        Application,
-        FederatedPointerEvent,
-        SCALE_MODES,
-        Sprite,
-    } from "pixi.js";
+    // import {
+    //     Application,
+    //     FederatedPointerEvent,
+    //     SCALE_MODES,
+    //     Sprite,
+    // } from "pixi.js";
 
-    const board = document.getElementById("board")!;
+    // const board = document.getElementById("board")!;
 
-    const app = new Application<HTMLCanvasElement>({
-        background: "#1099bb",
-        resizeTo: board,
-    });
+    // const app = new Application<HTMLCanvasElement>({
+    //     background: "#1099bb",
+    //     resizeTo: board,
+    // });
 
-    app.stage.eventMode = "static";
-    app.stage.hitArea = app.screen;
+    // app.stage.eventMode = "static";
+    // app.stage.hitArea = app.screen;
 
-    board.appendChild(app.view);
+    // board.appendChild(app.view);
 
-    const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
-    bunny.texture.baseTexture.scaleMode = SCALE_MODES.NEAREST;
+    // const bunny = Sprite.from("https://pixijs.com/assets/bunny.png");
+    // bunny.texture.baseTexture.scaleMode = SCALE_MODES.NEAREST;
 
-    bunny.cursor = "pointer";
+    // bunny.cursor = "pointer";
 
-    bunny.eventMode = "static";
-    bunny.scale.set(3);
+    // bunny.eventMode = "static";
+    // bunny.scale.set(3);
 
-    bunny.anchor.set(0.5);
-    bunny.x = app.screen.width / 2;
-    bunny.y = app.screen.height / 2;
+    // bunny.anchor.set(0.5);
+    // bunny.x = app.screen.width / 2;
+    // bunny.y = app.screen.height / 2;
 
-    bunny.on("pointerdown", () => {
-        bunny.alpha = 0.5;
-        app.stage.on("pointermove", drag);
-    });
+    // bunny.on("pointerdown", () => {
+    //     bunny.alpha = 0.5;
+    //     app.stage.on("pointermove", drag);
+    // });
 
-    function drag(event: FederatedPointerEvent) {
-        bunny.position = bunny.parent.toLocal(event.global);
-    }
+    // function drag(event: FederatedPointerEvent) {
+    //     bunny.position = bunny.parent.toLocal(event.global);
+    // }
 
-    app.stage.on("pointerup", () => {
-        app.stage.off("pointermove", drag);
-        bunny.alpha = 1;
-    });
+    // app.stage.on("pointerup", () => {
+    //     app.stage.off("pointermove", drag);
+    //     bunny.alpha = 1;
+    // });
 
-    app.stage.addChild(bunny);
+    // app.stage.addChild(bunny);
 </script>
