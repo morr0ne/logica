@@ -5,9 +5,8 @@ description = "A logic circuit simulator"
 authors = ["Federico Maria Morrone <contact@morrone.dev>"]
 license = "Apache-2.0"
 repository = ""
-default-run = "logica"
 edition = "2021"
-rust-version = "1.73"
+rust-version = "1.77.2"
 publish = false
 
 [profile.release]
@@ -16,14 +15,16 @@ codegen-units = 1
 strip = true
 # panic = "abort"
 
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
 [build-dependencies]
-tauri-build = { version = "1.5.1", features = [] }
+tauri-build = { version = "2.0.2", features = [] }
 
 [dependencies]
-tauri = { version = "1.5.4", features = [] }
-
-[features]
-# this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
-# If you use cargo directly instead of tauri's cli you can use this feature flag to switch between tauri's `dev` and `build` modes.
-# DO NOT REMOVE!!
-custom-protocol = ["tauri/custom-protocol"]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.1.0", features = [] }
+tauri-plugin-log = "2.0.0-rc"
