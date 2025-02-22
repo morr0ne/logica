@@ -2,7 +2,7 @@
 name = "logica"
 version = "0.1.0"
 description = "A logic circuit simulator"
-authors = ["Federico Maria Morrone <contact@morrone.dev>"]
+authors = ["Matilde Morrone <contact@morrone.dev>"]
 license = "Apache-2.0"
 repository = ""
 edition = "2021"
